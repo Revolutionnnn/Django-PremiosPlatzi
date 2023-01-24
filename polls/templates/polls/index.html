@@ -1,0 +1,33 @@
+{% extends 'polls/base.html' %}
+{% block title %}
+    <title>Premios Platzi | Home </title>
+{% endblock %}
+
+
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'polls/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+<header>
+    <h1>Premios Platzi App</h1>
+</header>
+
+{% if latest_question_list %}
+    <u>
+        {% for question in latest_question_list %}
+        <li><a href=" {% url  'polls:detail'  question.id  %} ">{{ question.question_text }}</a></li>
+        {% endfor %}
+    </u>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+<footer>
+    <a href="https://platzi.com/">Platzi</a>
+    <a href="#">Contacto</a>
+    <a href="#">Quieres ser profe?</a>
+    <a href="#">Politicas de privacidad</a>
+    <a href="#">Terminos y condiciones</a>
+</footer>
+
+{% endblock %}
